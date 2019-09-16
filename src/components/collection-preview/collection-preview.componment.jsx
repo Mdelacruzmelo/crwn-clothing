@@ -4,7 +4,7 @@ import CollectionItem from '../collection-item/collection-item.component';
 
 import './collection-preview.styles.scss';
 
-const PreviewCollection = ({ title, items }) => (
+const CollectionPreview = ({ title, items }) => (
 
 	<div className='collection-preview'>
 
@@ -26,4 +26,4 @@ const PreviewCollection = ({ title, items }) => (
 
 )
 
-export default PreviewCollection;
+export default CollectionPreview;
