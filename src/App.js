@@ -23,8 +23,32 @@ class App extends React.Component {
   unsusbcribeFromAuth = null
 
   componentDidMount() {
-    this.unsusbcribeFromAuth = auth.onAuthStateChanged(async user => {
-      createUserProfileDocument(user);
+    this.unsusbcribeFromAuth = auth.onAuthStateChanged(async userAuth => {
+
+      if (userAuth) {
+
+        const userRef = await createUserProfileDocument(userAuth);
+
+        // Check if our database is updated with new data
+        userRef.onSnapshot(snapShot => {
+
+          this.setState({
+            
+            currentUser: {
+              id: snapShot.id,
+              ...snapShot.data(),
+            }
+
+          });
+
+        });
+
+      } else {
+
+        this.setState({ currentUser: userAuth });
+
+      }
+
     })
   }
 
