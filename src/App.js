@@ -1,5 +1,5 @@
 import React from "react";
-import styled from 'styled-components';
+
 import { Switch, Route, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
@@ -13,16 +13,13 @@ import CheckoutPage from "./pages/checkout/checkout.component";
 
 import Header from "./components/header/header.component";
 
-import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
+import {
+  auth,
+  createUserProfileDocument
+} from "./firebase/firebase.utils";
 
 import { setCurrentUser } from "./redux/user/user.actions";
 import { selectCurrentUser } from "./redux/user/user.selectors";
-
-// const Text = styled.div`
-//   color: red;
-//   font-size: 28px;
-//   border: ${(props) => props.isActive ? '1px solid black' : '3px dotted green'};
-// `;
 
 class App extends React.Component {
   unsusbcribeFromAuth = null;
@@ -50,8 +47,6 @@ class App extends React.Component {
   componentWillUnmount() {
     this.unsusbcribeFromAuth();
   }
-
-// <Text isActive={false}>I am component</Text>
 
   render() {
     return (
